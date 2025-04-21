@@ -1,0 +1,17 @@
+{
+  "choose_language": "भाषा चुनें",
+  "choose_occupation": "व्यवसाय चुनें",
+  "continue": "जारी रखें",
+  "sub_category": "उपवर्ग",
+  "add_more": "अधिक जोड़ें",
+  "enter_name": "नाम दर्ज करें",
+  "enter_email": "ईमेल दर्ज करें",
+  "enter_password": "पासवर्ड दर्ज करें",
+  "enter_mobile": "मोबाइल दर्ज करें",
+  "enter_business_name": "व्यापार का नाम दर्ज करें",
+  "enter_business_address": "व्यापार पता दर्ज करें",
+  "enter_pin_code": "पिन कोड दर्ज करें",
+  "enter_gst": "जीएसटी संख्या दर्ज करें",
+  "Farmer": "किसान",
+  "Business": "व्यापार"
+}

@@ -1,0 +1,140 @@
+SELECT id, cropdata_id, year, month, price_per_unit, currency, created_at
+	FROM public.croppricehistory;
+	
+
+INSERT INTO CropPriceHistory (cropdata_id, year, month, price_per_unit, currency) VALUES
+(1, 2025, 'January', 8800, 'INR'),
+(1, 2025, 'February', 8600, 'INR'),
+(1, 2025, 'March', 8700, 'INR'),
+(1, 2025, 'April', 8900, 'INR'),
+(1, 2025, 'May', 9000, 'INR'),
+(1, 2025, 'June', 9200, 'INR'),
+(1, 2025, 'July', 9100, 'INR'),
+(1, 2025, 'August', 9300, 'INR'),
+(1, 2025, 'September', 9400, 'INR'),
+(1, 2025, 'October', 9500, 'INR'),
+(1, 2025, 'November', 9600, 'INR'),
+(1, 2025, 'December', 9700, 'INR');
+
+ALTER TABLE CropPriceHistory
+ADD COLUMN unit_id INT,
+ADD CONSTRAINT fk_unit
+FOREIGN KEY (unit_id) REFERENCES Unit(id);
+
+select * from CropPriceHistory;
+
+SELECT 
+    cp.cropdata_id,
+    cp.year,
+    cp.month,
+    cp.price_per_unit,
+    u.name AS unit,
+    cp.currency
+FROM CropPriceHistory cp
+JOIN Unit u ON cp.unit_id = u.id
+WHERE cp.cropdata_id = 1;
+
+Update CropPriceHistory set unit_id=3 
+
+
+SELECT 
+    cph.month,
+    cph.year,
+    cph.price_per_unit,
+    u.name AS unit,
+    cph.currency
+FROM CropPriceHistory cph
+JOIN Unit u ON cph.unit_id = u.id
+WHERE cph.cropdata_id = 1
+
+
+SELECT 
+    crop.name AS crop_name,
+    cph.month,
+    cph.year,
+    cph.price_per_unit,
+    u.name AS unit,
+    cph.currency
+FROM CropPriceHistory cph
+JOIN CropData c ON cph.cropdata_id = c.id
+JOIN Crop crop ON c.crop_id = crop.id
+JOIN Unit u ON cph.unit_id = u.id
+WHERE cph.cropdata_id = 1
+
+
+SELECT 
+    crop.name AS crop_name,
+    cph.month,
+    cph.year,
+    cph.price_per_unit,
+    u.name AS unit,
+    cph.currency
+FROM CropPriceHistory cph
+JOIN CropData c ON cph.cropdata_id = c.id
+JOIN Crop crop ON c.crop_id = crop.id
+JOIN Unit u ON cph.unit_id = u.id
+WHERE cph.cropdata_id = 1
+ORDER BY cph.year, 
+         CASE 
+             WHEN cph.month = 'January' THEN 1
+             WHEN cph.month = 'February' THEN 2
+             WHEN cph.month = 'March' THEN 3
+             WHEN cph.month = 'April' THEN 4
+             WHEN cph.month = 'May' THEN 5
+             WHEN cph.month = 'June' THEN 6
+             WHEN cph.month = 'July' THEN 7
+             WHEN cph.month = 'August' THEN 8
+             WHEN cph.month = 'September' THEN 9
+             WHEN cph.month = 'October' THEN 10
+             WHEN cph.month = 'November' THEN 11
+             WHEN cph.month = 'December' THEN 12
+         END;
+		 
+		 
+		 
+		 INSERT INTO CropPriceHistory (cropdata_id, month, year, price_per_unit, unit_id, currency) VALUES
+(1, 'January', 2024, 7600, 3, 'INR'),
+(1, 'February', 2024, 7700, 3, 'INR'),
+(1, 'March', 2024, 7800, 3, 'INR'),
+(1, 'April', 2024, 7850, 3, 'INR'),
+(1, 'May', 2024, 7900, 3, 'INR'),
+(1, 'June', 2024, 8000, 3, 'INR'),
+(1, 'July', 2024, 8100, 3, 'INR'),
+(1, 'August', 2024, 8200, 3, 'INR'),
+(1, 'September', 2024, 8300, 3, 'INR'),
+(1, 'October', 2024, 8350, 3, 'INR'),
+(1, 'November', 2024, 8400, 3, 'INR'),
+(1, 'December', 2024, 8500, 3, 'INR');
+
+
+CREATE VIEW CropPriceHistoryView AS
+SELECT
+    cph.id AS price_history_id,
+    crop.name AS crop_name,
+    cph.year,
+    cph.month,
+    cph.price_per_unit,
+    unit.name AS unit,
+    cph.currency,
+    country.name AS country,
+    state.name AS state,
+    district.name AS district,
+    taluka.name AS taluka
+FROM CropPriceHistory cph
+JOIN CropData cd ON cph.cropdata_id = cd.id
+JOIN Crop crop ON cd.crop_id = crop.id
+JOIN Unit unit ON cph.unit_id = unit.id
+JOIN Country country ON cd.country_id = country.id
+JOIN State state ON cd.state_id = state.id
+JOIN District district ON cd.district_id = district.id
+JOIN Taluka taluka ON cd.taluka_id = taluka.id;
+
+
+SELECT *
+FROM CropPriceHistoryView
+WHERE crop_name = 'Tur Dal'
+  AND year = 2024
+  AND state = 'Maharashtra'
+  AND district = 'Pune'
+  AND taluka = 'Baramati'
+  AND country = 'India';

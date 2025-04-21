@@ -1,0 +1,2 @@
+F:/Blackox/blackox/android/app/.cxx/Debug/57481mf5/armeabi-v7a/CMakeFiles/edit_cache.dir
+F:/Blackox/blackox/android/app/.cxx/Debug/57481mf5/armeabi-v7a/CMakeFiles/rebuild_cache.dir

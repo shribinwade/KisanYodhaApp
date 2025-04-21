@@ -1,0 +1,70 @@
+1) To see all views --> 
+SELECT schemaname, viewname FROM pg_views
+
+
+2)Created this views to get price for crops
+
+   i)croppricehistoryview
+
+  demo:- query 
+  SELECT * FROM CropPriceHistoryView WHERE crop_name = 'Tur Dal' AND year = 2024 AND state = 'Maharashtra' AND district = 'Pune' AND country = 'India';
+
+   ii) cropfulldetailsview
+      
+       demo:- query
+       SELECT * FROM CropFullDetailsView;
+
+   iii) cropDataWithPriceHistory
+        
+       demo:-
+        select * from cropDataWithPriceHistory 
+
+3) TO See view Defination
+   
+   query:- SELECT definition FROM pg_views WHERE schemaname = 'public' AND viewname = 'view_name';
+              or 
+           SELECT pg_get_viewdef('CropPriceHistoryView', true);
+
+
+
+4) schema for view cropDataWithPriceHistory
+   CREATE VIEW cropDataWithPricHistory AS
+SELECT cph.id AS price_history_id,
+       crop.name AS crop_name,
+	   season.name AS season_name,
+       cph.year,
+       cph.month,
+       cph.price_per_unit,
+       unit.name AS unit,
+       cph.currency,
+       country.name AS country,
+       state.name AS state,
+       district.name AS district,
+       taluka.name AS taluka,
+	   st.type As Soil_Type,
+	   cc.name AS crop_category,
+	   cv.name AS crop_variety,
+	   cd.price_currency,
+	   cd.sowing_period,
+	   cd.current_market_price,
+	   cd.predicted_market_price,
+	   unit.name AS market_price_unit,
+	   cd.best_selling_market,
+	   cd.msp_price,
+	   cd.predicted_harvest_month,
+	   cd.weather_impact,
+	   cd.sowing_recommendations,
+	   cd.ideal_soil_quality,
+	   cd.ideal_weather_conditions
+FROM croppricehistory cph
+JOIN cropdata cd ON cph.cropdata_id = cd.id
+JOIN crop crop ON cd.crop_id = crop.id
+JOIN soiltype st ON cd.soil_type_id = st.id
+JOIN cropcategory cc ON crop.id = cc.id
+JOIN variety cv ON crop.id = cv.crop_id
+JOIN season season ON cd.season_id = season.id
+JOIN unit unit ON cph.unit_id = unit.id
+JOIN country country ON cd.country_id = country.id
+JOIN state state ON cd.state_id = state.id
+JOIN district district ON cd.district_id = district.id
+JOIN taluka taluka ON cd.taluka_id = taluka.id;

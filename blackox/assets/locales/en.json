@@ -1,0 +1,17 @@
+{
+"choose_language": "Choose Language",
+"choose_occupation": "Choose Occupation",
+"continue": "Continue",
+"sub_category": "Subcategory",
+"add_more": "Add More",
+"enter_name": "Enter Name",
+"enter_email": "Enter Email",
+"enter_password": "Enter Password",
+"enter_mobile": "Enter Mobile",
+"enter_business_name": "Enter Business Name",
+"enter_business_address": "Enter Business Address",
+"enter_pin_code": "Enter Pin-Code",
+"enter_gst": "Enter GST Number",
+  "Farmer": "Farmer",
+  "Business": "Business"
+}

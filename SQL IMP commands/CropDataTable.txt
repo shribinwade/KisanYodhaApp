@@ -1,0 +1,120 @@
+1). cropData Retrival query---> 
+
+SELECT
+    c.id AS cropdata_id,
+    country.name AS country,
+    state.name AS state,
+    district.name AS district,
+    taluka.name AS taluka,
+    soil.type AS soil_type,
+    category.name AS crop_category, 
+    crop.name AS crop_name,
+    variety.name AS variety,
+    c.sowing_area,
+    area_unit.name AS sowing_area_unit,
+    season.name AS season_sowing,
+    c.year,
+    c.month,
+    c.price_per_unit,
+    c.price_currency,
+    c.sowing_period,
+    c.current_market_price,
+    c.predicted_market_price,
+    price_unit.name AS market_price_unit,
+    c.best_selling_market,
+    c.msp_price,
+    msp_unit.name AS msp_unit,
+    c.predicted_harvest_month,
+    c.weather_impact,
+    c.sowing_recommendations,
+    c.ideal_soil_quality,
+    c.ideal_weather_conditions
+
+FROM CropData c
+JOIN Country country ON c.country_id = country.id
+JOIN State state ON c.state_id = state.id
+JOIN District district ON c.district_id = district.id
+JOIN Taluka taluka ON c.taluka_id = taluka.id
+JOIN SoilType soil ON c.soil_type_id = soil.id
+JOIN Crop crop ON c.crop_id = crop.id
+JOIN CropCategory category ON crop.category_id = category.id
+JOIN Variety variety ON c.variety_id = variety.id
+JOIN Unit area_unit ON c.sowing_area_unit_id = area_unit.id
+JOIN Season season ON c.season_id = season.id
+JOIN Unit price_unit ON c.market_price_unit_id = price_unit.id
+JOIN Unit msp_unit ON c.msp_unit_id = msp_unit.id;
+
+
+2) Crop data Insert sample data --->
+
+INSERT INTO CropData (
+    country_id, state_id, district_id, taluka_id,
+    soil_type_id, crop_id, variety_id,
+    sowing_area, sowing_area_unit_id, season_id, year, month,
+    price_per_unit, price_currency, sowing_period,
+    current_market_price, predicted_market_price,
+    market_price_unit_id, best_selling_market,
+    msp_price, msp_unit_id, predicted_harvest_month,
+    weather_impact, sowing_recommendations,
+    ideal_soil_quality, ideal_weather_conditions
+) VALUES
+-- Row 1: Tur Dal
+(1, 1, 1, 1, 1, 1, 1, 500, 1, 1, 2025, 'June', 80, 'INR', 'June-August', 75, 85, 3, 'Mumbai APMC', 70, 3, 'January', 'Moderate Rain', 'Requires 30°C, well-drained soil', 'Loamy, well-drained', '25-35°C, Moderate Rain'),
+
+-- Row 2: Grapes
+(1, 1, 2, 2, 2, 2, 2, 300, 1, 2, 2025, 'October', 60, 'INR', 'Oct-Nov', 55, 65, 2, 'Delhi Market', 50, 3, 'March-April', 'Humid', 'Needs high organic content', 'Sandy loam, well-drained', '15-30°C, Dry Climate');
+
+
+3) created the view --->
+CREATE VIEW CropFullDetailsView AS
+SELECT
+    c.id AS cropdata_id,
+    country.name AS country,
+    state.name AS state,
+    district.name AS district,
+    taluka.name AS taluka,
+    soil.type AS soil_type,
+    category.name AS crop_category, 
+    crop.name AS crop_name,
+    variety.name AS variety,
+    c.sowing_area,
+    area_unit.name AS sowing_area_unit,
+    season.name AS season_sowing,
+    c.year,
+    c.month,
+    c.price_per_unit,
+    c.price_currency,
+    c.sowing_period,
+    c.current_market_price,
+    c.predicted_market_price,
+    price_unit.name AS market_price_unit,
+    c.best_selling_market,
+    c.msp_price,
+    msp_unit.name AS msp_unit,
+    c.predicted_harvest_month,
+    c.weather_impact,
+    c.sowing_recommendations,
+    c.ideal_soil_quality,
+    c.ideal_weather_conditions
+
+FROM CropData c
+JOIN Country country ON c.country_id = country.id
+JOIN State state ON c.state_id = state.id
+JOIN District district ON c.district_id = district.id
+JOIN Taluka taluka ON c.taluka_id = taluka.id
+JOIN SoilType soil ON c.soil_type_id = soil.id
+JOIN Crop crop ON c.crop_id = crop.id
+JOIN CropCategory category ON crop.category_id = category.id
+JOIN Variety variety ON c.variety_id = variety.id
+JOIN Unit area_unit ON c.sowing_area_unit_id = area_unit.id
+JOIN Season season ON c.season_id = season.id
+JOIN Unit price_unit ON c.market_price_unit_id = price_unit.id
+JOIN Unit msp_unit ON c.msp_unit_id = msp_unit.id;
+
+4) Retrieve from view ---->
+SELECT * FROM CropFullDetailsView;
+
+
+
+
+	

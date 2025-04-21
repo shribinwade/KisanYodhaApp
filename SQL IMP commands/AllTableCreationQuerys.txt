@@ -1,0 +1,54 @@
+CREATE TABLE Country (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) UNIQUE NOT NULL
+);
+
+CREATE TABLE State (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    country_id INT REFERENCES Country(id)
+);
+
+CREATE TABLE District (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    state_id INT REFERENCES State(id)
+);
+
+CREATE TABLE Taluka (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    district_id INT REFERENCES District(id)
+);
+
+CREATE TABLE SoilType (
+    id SERIAL PRIMARY KEY,
+    type VARCHAR(100) UNIQUE NOT NULL
+);
+
+CREATE TABLE CropCategory (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) UNIQUE NOT NULL
+);
+
+CREATE TABLE Crop (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    category_id INT REFERENCES CropCategory(id)
+);
+
+CREATE TABLE Variety (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    crop_id INT REFERENCES Crop(id)
+);
+
+CREATE TABLE Season (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) UNIQUE NOT NULL
+);
+
+CREATE TABLE Unit (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) UNIQUE NOT NULL
+);

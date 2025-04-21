@@ -1,0 +1,17 @@
+{
+  "choose_language": "भाषा निवडा",
+  "choose_occupation": "व्यवसाय निवडा",
+  "continue": "सुरू ठेवा",
+  "sub_category": "उपवर्ग",
+  "add_more": "अधिक जोडा",
+  "enter_name": "नाव प्रविष्ट करा",
+  "enter_email": "ईमेल प्रविष्ट करा",
+  "enter_password": "पासवर्ड प्रविष्ट करा",
+  "enter_mobile": "मोबाइल प्रविष्ट करा",
+  "enter_business_name": "व्यवसायाचं नाव प्रविष्ट करा",
+  "enter_business_address": "व्यवसाय पत्ता प्रविष्ट करा",
+  "enter_pin_code": "पिन कोड प्रविष्ट करा",
+  "enter_gst": "जीएसटी क्रमांक प्रविष्ट करा",
+  "Farmer": "शेतकरी",
+  "Business": "व्यवसाय"
+}

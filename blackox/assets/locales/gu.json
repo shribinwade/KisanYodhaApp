@@ -1,0 +1,17 @@
+{
+  "choose_language": "ભાષા પસંદ કરો",
+  "choose_occupation": "વ્યવસાય પસંદ કરો",
+  "continue": "ચાલુ રાખો",
+  "sub_category": "ઉપવર્ગ",
+  "add_more": "વધુ ઉમેરો",
+  "enter_name": "નામ દાખલ કરો",
+  "enter_email": "ઈમેલ દાખલ કરો",
+  "enter_password": "પાસવર્ડ દાખલ કરો",
+  "enter_mobile": "મોબાઇલ દાખલ કરો",
+  "enter_business_name": "વ્યાપારનું નામ દાખલ કરો",
+  "enter_business_address": "વ્યાપારનો સરનામું દાખલ કરો",
+  "enter_pin_code": "પિન કોડ દાખલ કરો",
+  "enter_gst": "જીએસટી નંબર દાખલ કરો",
+  "Farmer": "ખેડૂત",
+  "Business": "બિઝનેસ"
+}
