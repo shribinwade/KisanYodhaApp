@@ -1,3 +1,4 @@
+import 'package:blackox/Constants/screen_utility.dart';
 import 'package:blackox/CropCalculator/bom_screen.dart';
 import 'package:blackox/Services/database_services.dart';
 import 'package:country_currency_pickers/country.dart';
@@ -235,15 +236,30 @@ class _CropCalculatorState extends State<CropCalculator> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'Crop Calculator',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black87,
-                  backgroundColor: Colors.yellowAccent,
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  border: Border.all(color: Colors.black, width: 0),
+                  color: const Color(0xFFD2DE32),
+                ),
+                child: SizedBox(
+                  width: ScreenUtility.screenWidth,
+                  child: const Center(
+                    child: Padding(
+                      padding: EdgeInsets.all(3.0),
+                      child: Text(
+                        'Crop Calculator',
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black87,
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
               ),
+
               const SizedBox(height: 16),
 
               // Country and State Dropdown in Row
@@ -479,7 +495,10 @@ class _CropCalculatorState extends State<CropCalculator> {
                   });
                 },
               ),
-              const SizedBox(height: 16),
+              const SizedBox(
+                height: 16,
+                width: 8,
+              ),
               CountryPickerDropdown(
                 initialValue: 'IN',
                 itemBuilder: _buildDropdownItem,
@@ -519,8 +538,9 @@ class _CropCalculatorState extends State<CropCalculator> {
     return Row(
       children: <Widget>[
         CountryPickerUtils.getDefaultFlagImage(country),
-        const SizedBox(width: 8.0),
-        Text("${country.name} (${country.currencyCode})"),
+        SizedBox(
+            width: ScreenUtility.screenWidth * 0.79,
+            child: Text("${country.name} (${country.currencyCode})")),
       ],
     );
   }

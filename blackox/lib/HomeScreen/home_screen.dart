@@ -290,7 +290,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ],
           ),
-          backgroundColor: Colors.orange,
+          // backgroundColor: Colors.orange,
           automaticallyImplyLeading: false,
           leading: Builder(
             builder: (BuildContext context) {
